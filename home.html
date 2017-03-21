@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Travel Agency</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script src="home.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="custome.css">
+
+    <style type="text/css">
+        body {
+            background: url("images/backgroundImage.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+<div data-role="page", id="homepage">
+<div class="col-sm-4">
+    <p class="title"><span style="font-size: 60px; color:brown; font-weight: bolder"> UWS </span> </br> Travel Agency </p>
+</div>
+<div class="col-sm-4">
+    <img class="logo" src=images/logo1.jpg>
+</div>
+<div class="col-sm-4">
+    <p> Customer Service: 111-111-111 </p>
+    <p> <span style="font-weight: bold"> Head Office: </span> </br> 20 Crofton Square </br> Renfrew </br> PA4 8YY </p>
+</div>
+<div class="col-sm-12">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Desitinations</a></li>
+                <li><a href="#">Vacations</a></li>
+                <li><a href="#">Contact Us</a> </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="col-sm-12">
+    <div class="transbox">
+        <span style="color:white; font-size: 30px" > Search Flight </span>
+        </br></br>
+        <div class="btn-group btn-group-1g">
+            <button type="button" class="btn btn-primary"> Return </button>
+            <button type="button" class="btn btn-primary"> One Way </button>
+        </div>
+        <form class="form" style="padding-top: 20px">
+            <div class="col-xs-6">
+                <label> Flying from </label>
+                <input list="flyingfrom" name="airport" class="form-control input-lg">
+                <datalist id="flyingfrom">
+                <option value="Glasgow Intertnational Airport">
+                <option value="Prestwick Airport">
+                <option value="Edinburgh Airport">
+                <option value="London Heathrow Airport">
+                <option value="Birmingham Airport">
+                </datalist>
+            </div>
+            <div class="col-xs-6">
+                <label> Flying to </label>
+                <input list="flyingto" name="airport" class="form-control input-lg">
+                <datalist id="flyingto">
+                    <option value="Glasgow Intertnational Airport">
+                    <option value="Prestwick Airport">
+                    <option value="Edinburgh Airport">
+                    <option value="London Heathrow Airport">
+                    <option value="Birmingham Airport">
+                </datalist>
+
+            </div>
+            <div class="col-xs-4" style="padding-top: 20px">
+                <label for="traveldate"> Departing </label>
+                <input type="date" id="traveldate" class="form-control input-lg">
+            </div>
+            <div class="col-xs-4" style="padding-top: 20px">
+                <label for="arrivaldate"> Returning </label>
+                <input type="date" id="arrivaldate" class="form-control input-lg">
+            </div>
+            <div class="col-xs-2" style="padding-top: 20px">
+                <label>Adults (18+) </label>
+                <select class="form-control" id="adults">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+             </div>
+             <div class="col-xs-2" style="padding-top: 20px">
+                <label>Children(1-17) </label>
+                <select class="form-control" id="child">
+                   <option>0</option>
+                   <option>1</option>
+                   <option>2</option>
+                   <option>3</option>
+                   <option>4</option>
+                 </select>
+             </div>
+        </form>
+
+        <button type="button" class="btn btn-primary btn-lg button" id="search"> Search </button>
+
+
+
+
+    </div>
+</div>
+
+<div id="searchResults-tableBody">
+</div>
+</div>
+
+</body>
+
+</html>

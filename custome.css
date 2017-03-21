@@ -1,0 +1,45 @@
+.logo {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.transbox {
+    position: relative;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 40%;
+    margin-top: 10px;
+    background: rgba(54, 59, 79, 0.6);
+    padding: 25px;
+    height: 400px;
+
+
+}
+
+.transbox p{
+    margin: 50%;
+
+}
+label {
+    font-size: 15px;
+    color: white;
+}
+.button{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+p {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: right;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #66512c;
+}

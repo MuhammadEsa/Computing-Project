@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <script type="text/javascript" src="plugins/jquery-3.1.1.min.js"></script>
+    <script src="admin.js"></script>
+</head>
+<body>
+    <label> Airport ID </label>
+    <input type="text" id="airportid">
+    <label> Airport Name </label>
+    <input type="text" id="airportname">
+
+    <button id="postAirport"> Add Aiport </button>
+</br>
+    <label> Jet ID </label>
+    <input type="text" id="jetid">
+    <label> Jet Name </label>
+    <input type="text" id="jetname">
+    <label> Jet Capacity </label>
+    <input type="number" id="jetcapacity">
+    <label> Flight No. </label>
+    <input type="text" id="flightno">
+
+    <button id="postJet"> Add Airoplane </button>
+    </br>
+    <label> Departure Time </label>
+    <select id="dtime"></select>
+    <label> Departure Date </label>
+    <input type="date" id="ddate">
+    <label> Arrival Time </label>
+    <select id="atime"></select>
+    <label> Arrival Date </label>
+    <input type="date" id="adate">
+    <label> Destination Airport </label>
+    <input type="text" id="dairport">
+    <label> Price </label>
+    <input type="number" id="price">
+    <label> Available Seats </label>
+    <input type="number" id="avseats">
+
+    <button id="postFlight"> Post Flight </button>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyC97BdTEnR2xSRXn1pxYC0vkcPVIEHutz0",
+        authDomain: "travel-agency-comp-project.firebaseapp.com",
+        databaseURL: "https://travel-agency-comp-project.firebaseio.com",
+        storageBucket: "travel-agency-comp-project.appspot.com",
+        messagingSenderId: "203680461964"
+    };
+    firebase.initializeApp(config);
+
+        airportIdElement = document.getElementById('airportid');
+        jetIdElement = document.getElementById('jetid');
+        flightNoElement = document.getElementById('flightno');
+        avSeatElement = document.getElementById('avseats');
+
+
+    document.getElementById('postAirport').addEventListener('click', function writeNewPost() {
+
+        var nameElement = document.getElementById('airportname'),
+            airport = nameElement.value,
+            aiportID = airportIdElement.value;
+
+        nameElement.value="";
+        airportIdElement.value="";
+        // A post entry.
+
+        var postData = {City: airport, AirportID: aiportID};
+
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref().child('CityofAirport').push().key;
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+
+        var updates= {};
+        updates['/CityofAirport/' + newPostKey] = postData;
+        return firebase.database().ref().update(updates);
+
+    });
+
+
+
+    document.getElementById('postJet').addEventListener('click', function writeNewPost() {
+        var nameElement = document.getElementById('jetname'),
+            airoplane = nameElement.value,
+            jetID = jetIdElement.value,
+            jetCapacityElement = document.getElementById('jetcapacity'),
+            jetCapacity = jetCapacityElement.value,
+            flightNo = flightNoElement.value;
+
+
+        flightNoElement.value="";
+        // A post entry.
+
+        var postData = {JetName: airoplane, JetID: jetID, JetCapacity: jetCapacity, FlightNo: flightNo };
+
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref().child('Airoplane').push().key;
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+
+        var updates= {};
+        updates['/Airoplane/' + newPostKey] = postData;
+        return firebase.database().ref().update(updates);
+
+
+    });
+    document.getElementById('postFlight').addEventListener('click', function writeNewPost() {
+        var
+            dTime = dtimeElement.value,
+            dDate = dDateElement.value,
+            aTime = atimeElement.value,
+            aDate = dDateElement.value,
+            dAirportElement = document.getElementById('dairport'),
+            dAirport = dAirportElement.value,
+            priceElement = document.getElementById('price'),
+            price = priceElement.value,
+            aiportID = airportIdElement.value,
+            flightNo = flightNoElement.value,
+            avSeats = avSeatElement.value;
+        dAirportElement.value="";
+        priceElement.value="";
+        console.log(dTime);
+
+        // A post entry.
+
+        var postData = {DTime: dTime, DDate: dDate, ATime: aTime, ADate: aDate, DestinationAirport:
+        dAirport, PickupAirportID: aiportID, FlightNo: flightNo, Price: price, AvailableSeats: avSeats };
+
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref().child('Flight').push().key;
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+
+        var updates= {};
+        updates['/Flight/' + newPostKey] = postData;
+
+
+        return firebase.database().ref().update(updates);
+
+
+
+    });
+
+
+</script>
+
+</html>
